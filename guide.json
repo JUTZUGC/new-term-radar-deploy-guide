@@ -1,0 +1,116 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "newtermradar",
+    "nameCn": "new-term-radar",
+    "repoName": "new-term-radar-deploy-guide",
+    "oneLiner": "每天从 X、Hugging Face、GitHub 与站点地图里抓正在冒头的新名字",
+    "officialRepo": "https://github.com/zhuyansen/new-term-radar",
+    "officialDocs": "https://github.com/zhuyansen/new-term-radar#quick-start",
+    "stars": "1.9k",
+    "license": "MIT",
+    "highlights": [
+      "GitHub 爆发：14 天内日均 200+ 星的新仓库",
+      "Hugging Face：新进趋势榜的模型与 Space",
+      "X 首提：名单账号 60 天内第一次说的名字",
+      "站点地图：新 URL 共享、老页面少见的词",
+      "关键词表：页面竞争、域名、排名与 12 个月曲线",
+      "14 天复盘：回看当时报的词有没有涨",
+      "多种调用：CLI、MCP server、Agent Skills"
+    ],
+    "mcpSupport": "项目自带 MCP server 与 Agent Skills（也发在 PyPI 与 MCP Registry）；本仓库的 MCP 只提供部署步骤、参数与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-29",
+    "verification": [
+      [
+        "README Quick start 确认 Python 3.10+、标准库、--skip x 用法",
+        "已核对 2026-10-29"
+      ],
+      [
+        "README 确认六个信号、MCP server 与 Skills 入口",
+        "已核对 2026-10-29"
+      ],
+      [
+        "未实测日报抓取（未配置 AISA_API_KEY）",
+        "说明 2026-10-29"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-10-29"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-29"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "python"
+      ],
+      "steps": [
+        "python -c \"import sys; assert sys.version_info >= (3,10), '需要 Python 3.10+，当前 '+sys.version\"",
+        "git clone https://github.com/zhuyansen/new-term-radar.git",
+        "cd new-term-radar",
+        "cp config.example.json config.json",
+        "python -m radar daily --skip x --out report.md",
+        "echo \"已生成 report.md：先看候选词，再按需配置 AISA_API_KEY 打开 X 信号\""
+      ],
+      "stepsPs": [
+        "python -c \"import sys; assert sys.version_info >= (3,10), '需要 Python 3.10+，当前 '+sys.version\"",
+        "git clone https://github.com/zhuyansen/new-term-radar.git",
+        "Set-Location new-term-radar",
+        "Copy-Item config.example.json config.json",
+        "python -m radar daily --skip x --out report.md",
+        "Write-Host \"已生成 report.md：先看候选词，再按需配置 AISA_API_KEY 打开 X 信号\""
+      ],
+      "source": "https://github.com/zhuyansen/new-term-radar#quick-start"
+    },
+    "pitfalls": [
+      "Python 版本不够：升到 3.10+",
+      "radar 模块找不到：确认在仓库根目录执行 python -m radar",
+      "没有 X 结果：先加 --skip x，或配置 AISA_API_KEY",
+      "第一次报告很少：正常，第二天才有对比快照",
+      "GitHub 限流：配一个只读 token 提高限额",
+      "定时任务重复抓：用 --state 指定固定目录保存快照"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/new-term-radar-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/new-term-radar-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "new-term-radar",
+    "AI 新词 监控",
+    "新词雷达",
+    "关键词工具 替代",
+    "GitHub 爆发 监控",
+    "AI 趋势 日报",
+    "new-term-radar 部署",
+    "MCP 新词雷达",
+    "new term radar deploy guide",
+    "AI 关键词 发现"
+  ],
+  "topics": [
+    "seo",
+    "trending",
+    "mcp",
+    "python",
+    "research",
+    "new-term-radar"
+  ]
+}
